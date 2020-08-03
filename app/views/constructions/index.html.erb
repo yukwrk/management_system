@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Constructions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Construction name</th>
+      <th>Contract price</th>
+      <th>Person</th>
+      <th>Material cost</th>
+      <th>Subcontract cost</th>
+      <th>Site overhead expenses</th>
+      <th>Total cost</th>
+      <th>Selling</th>
+      <th>Cash budget</th>
+      <th>Charge</th>
+      <th>Pay the difference</th>
+      <th>Selling the difference</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constructions.each do |construction| %>
+      <tr>
+        <td><%= construction.construction_name %></td>
+        <td><%= construction.contract_price %></td>
+        <td><%= construction.person %></td>
+        <td><%= construction.material_cost %></td>
+        <td><%= construction.subcontract_cost %></td>
+        <td><%= construction.site_overhead_expenses %></td>
+        <td><%= construction.total_cost %></td>
+        <td><%= construction.selling %></td>
+        <td><%= construction.cash_budget %></td>
+        <td><%= construction.charge %></td>
+        <td><%= construction.pay_the_difference %></td>
+        <td><%= construction.selling_the_difference %></td>
+        <td><%= construction.comment %></td>
+        <td><%= link_to 'Show', construction %></td>
+        <td><%= link_to 'Edit', edit_construction_path(construction) %></td>
+        <td><%= link_to 'Destroy', construction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Construction', new_construction_path %>

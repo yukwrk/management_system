@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  construction_name: MyString
+  contract_price: 1
+  person: MyString
+  material_cost: 1
+  subcontract_cost: MyString
+  site_overhead_expenses: 1
+  total_cost: 1
+  selling: 1
+  cash_budget: 1
+  charge: 1
+  pay_the_difference: 1
+  selling_the_difference: 1
+  comment: MyString
+
+two:
+  construction_name: MyString
+  contract_price: 1
+  person: MyString
+  material_cost: 1
+  subcontract_cost: MyString
+  site_overhead_expenses: 1
+  total_cost: 1
+  selling: 1
+  cash_budget: 1
+  charge: 1
+  pay_the_difference: 1
+  selling_the_difference: 1
+  comment: MyString

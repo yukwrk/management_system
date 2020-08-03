@@ -1,0 +1,82 @@
+<%= form_with(model: construction, local: true) do |form| %>
+  <% if construction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(construction.errors.count, "error") %> prohibited this construction from being saved:</h2>
+
+      <ul>
+      <% construction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :construction_name %>
+    <%= form.text_field :construction_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :contract_price %>
+    <%= form.number_field :contract_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :person %>
+    <%= form.text_field :person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :material_cost %>
+    <%= form.number_field :material_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :subcontract_cost %>
+    <%= form.text_field :subcontract_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :site_overhead_expenses %>
+    <%= form.number_field :site_overhead_expenses %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_cost %>
+    <%= form.number_field :total_cost %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selling %>
+    <%= form.number_field :selling %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cash_budget %>
+    <%= form.number_field :cash_budget %>
+  </div>
+
+  <div class="field">
+    <%= form.label :charge %>
+    <%= form.number_field :charge %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pay_the_difference %>
+    <%= form.number_field :pay_the_difference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selling_the_difference %>
+    <%= form.number_field :selling_the_difference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :comment %>
+    <%= form.text_field :comment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
