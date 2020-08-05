@@ -1,5 +1,11 @@
-<h1>現場登録</h1>
 
-<%= render 'form', construction: @construction %>
+<div class="container" style="margin-top : 60px">
+  <div class="panel panel-default">
+    <div class="panel-heading">現場登録</div>
+    <div class="panel-body">
+    <%= render 'form', construction: @construction %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Back', constructions_path %>

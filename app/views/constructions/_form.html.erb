@@ -10,74 +10,95 @@
       </ul>
     </div>
   <% end %>
+  
+    <div class="form-group">
+     <div class="form-inline">
+        <%= form.label :'現場名' %>
+        <%= form.text_field :construction_name, class:"form-control", style:"width:300px" %>
+        <%= form.label :'担当者' %>
+        <%= form.text_field :person, class:"form-control", style:"width:300px" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :'現場名' %>
-    <%= form.text_field :construction_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :'担当者' %>
-    <%= form.text_field :person %>
-  </div>
-
-  <div class="field">
-    <%= form.label :'請負金額①' %>
-    <%= form.number_field :contract_price %>
-  </div>
+<% 
+=begin
+%>
+    <div class="form-group">
+      <%= form.label :'請負金額①' %>
+      <%= form.number_field :contract_price, class:"form-control", style:"width:300px" %>
+    </div>
+<% 
+=end
+%>
 
 
-  <div class="field">
-    <%= form.label :'材料費' %>
-    <%= form.number_field :material_cost %>
-  </div>
+    <div class="form-group">
+     <div class="form-inline">
+      <%= form.label :'材料費   ' %>
+      <%= form.number_field :material_cost, class:"form-control", style:"width:300px" %>
+      <%= form.label :'外注費   ' %>
+      <%= form.text_field :subcontract_cost, class:"form-control", style:"width:300px" %>
+      <%= form.label :'現場経費   ' %>
+      <%= form.number_field :site_overhead_expenses, class:"form-control", style:"width:300px" %>
+     </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :'外注費' %>
-    <%= form.text_field :subcontract_cost %>
-  </div>
 
-  <div class="field">
-    <%= form.label :'現場経費' %>
-    <%= form.number_field :site_overhead_expenses %>
-  </div>
 
-  <div class="field">
-    <%= form.label :'原価計 ②' %>
-    <%= form.number_field :total_cost %>
-  </div>
+<% 
+=begin
+%>
+    <div class="form-group">
+     <div class="form-inline">
+      <%= form.label :'原価計' %>
+      <%= form.number_field :total_cost, class:"form-control", style:"width:300px", id:"InputText"%>
+     </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :'販管費13% ③' %>
-    <%= form.number_field :selling %>
-  </div>
+    <div class="form-group">
+      <%= form.label :'販管費13% ③' %>
+      <%= form.number_field :selling, class:"form-control", style:"width:300px" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :'予算収支' %>
-    <%= form.number_field :cash_budget %>
-  </div>
+    <div class="form-group">
+      <%= form.label :'予算収支' %>
+      <%= form.number_field :cash_budget, class:"form-control", style:"width:300px" %>
+    </div>
+<% 
+=end
+%>
 
-  <div class="field">
-    <%= form.label :'請求額(税抜き) ④' %>
-    <%= form.number_field :charge %>
-  </div>
 
-  <div class="field">
-    <%= form.label :'差額 ⑤' %>
-    <%= form.number_field :pay_the_difference %>
-  </div>
+    <div class="form-group">
+     <div class="form-inline">
+      <%= form.label :'請求額' %>
+      <%= form.number_field :charge, class:"form-control", style:"width:300px" %><span>(税抜き)</span>
+     </div>
+    </div>
 
-  <div class="field">
-    <%= form.label :'販管費 ⑤-③' %>
-    <%= form.number_field :selling_the_difference %>
-  </div>
+<%
+=begin
+%>
+    <div class="form-group">
+      <%= form.label :'差額 ⑤' %>
+      <%= form.number_field :pay_the_difference, class:"form-control", style:"width:300px" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :'備考' %>
-    <%= form.text_field :comment %>
-  </div>
+    <div class="form-group">
+      <%= form.label :'販管費 ⑤-③' %>
+      <%= form.number_field :selling_the_difference, class:"form-control", style:"width:300px" %>
+    </div>
 
-  <div class="actions">
-    <%= form.submit '登録' %>
-  </div>
+<%
+=end
+%>
+
+    <div class="form-group">
+      <%= form.label :'備考' %>
+      <%= form.text_area :comment, class:"form-control", style:"width:300px" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit '登録' %>
+    </div>
 <% end %>
