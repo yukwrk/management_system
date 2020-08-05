@@ -12,71 +12,72 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :construction_name %>
+    <%= form.label :'現場名' %>
     <%= form.text_field :construction_name %>
   </div>
 
   <div class="field">
-    <%= form.label :contract_price %>
-    <%= form.number_field :contract_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :person %>
+    <%= form.label :'担当者' %>
     <%= form.text_field :person %>
   </div>
 
   <div class="field">
-    <%= form.label :material_cost %>
+    <%= form.label :'請負金額①' %>
+    <%= form.number_field :contract_price %>
+  </div>
+
+
+  <div class="field">
+    <%= form.label :'材料費' %>
     <%= form.number_field :material_cost %>
   </div>
 
   <div class="field">
-    <%= form.label :subcontract_cost %>
+    <%= form.label :'外注費' %>
     <%= form.text_field :subcontract_cost %>
   </div>
 
   <div class="field">
-    <%= form.label :site_overhead_expenses %>
+    <%= form.label :'現場経費' %>
     <%= form.number_field :site_overhead_expenses %>
   </div>
 
   <div class="field">
-    <%= form.label :total_cost %>
+    <%= form.label :'原価計 ②' %>
     <%= form.number_field :total_cost %>
   </div>
 
   <div class="field">
-    <%= form.label :selling %>
+    <%= form.label :'販管費13% ③' %>
     <%= form.number_field :selling %>
   </div>
 
   <div class="field">
-    <%= form.label :cash_budget %>
+    <%= form.label :'予算収支' %>
     <%= form.number_field :cash_budget %>
   </div>
 
   <div class="field">
-    <%= form.label :charge %>
+    <%= form.label :'請求額(税抜き) ④' %>
     <%= form.number_field :charge %>
   </div>
 
   <div class="field">
-    <%= form.label :pay_the_difference %>
+    <%= form.label :'差額 ⑤' %>
     <%= form.number_field :pay_the_difference %>
   </div>
 
   <div class="field">
-    <%= form.label :selling_the_difference %>
+    <%= form.label :'販管費 ⑤-③' %>
     <%= form.number_field :selling_the_difference %>
   </div>
 
   <div class="field">
-    <%= form.label :comment %>
+    <%= form.label :'備考' %>
     <%= form.text_field :comment %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit '登録' %>
   </div>
 <% end %>
