@@ -26,15 +26,16 @@ class ConstructionsController < ApplicationController
   def create
     @construction = Construction.new(construction_params)
 
-    respond_to do |format|
+    # respond_to do |format|
       if @construction.save
-        format.html { redirect_to @construction, notice: 'Construction was successfully created.' }
-        format.json { render :show, status: :created, location: @construction }
+        # format.html { redirect_to @construction, notice: 'Construction was successfully created.' }
+        # format.json { render :show, status: :created, location: @construction }
+        redirect_to constructions_path
       else
-        format.html { render :new }
-        format.json { render json: @construction.errors, status: :unprocessable_entity }
+        # format.html { render :new }
+        # format.json { render json: @construction.errors, status: :unprocessable_entity }
+        render new
       end
-    end
   end
 
   # PATCH/PUT /constructions/1

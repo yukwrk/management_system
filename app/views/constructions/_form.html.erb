@@ -20,6 +20,8 @@
       </div>
     </div>
 
+
+
 <% 
 =begin
 %>
@@ -35,26 +37,25 @@
     <div class="form-group">
      <div class="form-inline">
       <%= form.label :'材料費   ' %>
-      <%= form.number_field :material_cost, class:"form-control", style:"width:300px" %>
+      <%= form.text_field :material_cost, class:"form-control plus-target", id:"material_cost", style:"width:300px" %>
       <%= form.label :'外注費   ' %>
-      <%= form.text_field :subcontract_cost, class:"form-control", style:"width:300px" %>
+      <%= form.text_field :subcontract_cost, class:"form-control plus-target", id:"subcontract_cost", style:"width:300px" %>
       <%= form.label :'現場経費   ' %>
-      <%= form.number_field :site_overhead_expenses, class:"form-control", style:"width:300px" %>
+      <%= form.text_field :site_overhead_expenses, class:"form-control plus-target", id:"site_overhead_expenses", style:"width:300px" %>
      </div>
     </div>
 
-
+    <div class="form-group">
+     <div class="form-inline">
+      <%= form.label :'原価計' %>
+      <%= form.text_field :total_cost, class:"form-control", style:"width:300px", id:"total_cost"%>
+      <button type="button" class="btn btn-primary add_button">計算</button>
+     </div>
+    </div>
 
 <% 
 =begin
 %>
-    <div class="form-group">
-     <div class="form-inline">
-      <%= form.label :'原価計' %>
-      <%= form.number_field :total_cost, class:"form-control", style:"width:300px", id:"InputText"%>
-     </div>
-    </div>
-
     <div class="form-group">
       <%= form.label :'販管費13% ③' %>
       <%= form.number_field :selling, class:"form-control", style:"width:300px" %>
@@ -72,7 +73,16 @@
     <div class="form-group">
      <div class="form-inline">
       <%= form.label :'請求額' %>
-      <%= form.number_field :charge, class:"form-control", style:"width:300px" %><span>(税抜き)</span>
+      <%= form.number_field :charge, class:"form-control", style:"width:300px", id:"charge" %><span style="margin-left:5px">(税抜き)</span>
+     </div>
+    </div>
+
+    <div class="form-group">
+     <div class="form-inline">
+      <%= form.label :'差額' %>
+      <%= form.number_field :pay_the_difference, class:"form-control", style:"width:300px", id:"pay_the_difference" %>
+      <button type="button" class="btn btn-primary minus_button">計算</button>
+
      </div>
     </div>
 
@@ -93,7 +103,7 @@
 =end
 %>
 
-    <div class="form-group">
+    <div class="form-inline">
       <%= form.label :'備考' %>
       <%= form.text_area :comment, class:"form-control", style:"width:300px" %>
     </div>
