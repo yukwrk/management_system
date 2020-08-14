@@ -43,7 +43,7 @@ class ConstructionsController < ApplicationController
   def update
     respond_to do |format|
       if @construction.update(construction_params)
-        format.html { redirect_to @construction, notice: 'Construction was successfully updated.' }
+        format.html { redirect_to constructions_path, notice: 'Construction was successfully updated.' }
         format.json { render :show, status: :ok, location: @construction }
       else
         format.html { render :edit }
@@ -70,6 +70,6 @@ class ConstructionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def construction_params
-      params.require(:construction).permit(:construction_name, :contract_price, :person, :material_cost, :subcontract_cost, :site_overhead_expenses, :total_cost, :selling, :cash_budget, :charge, :pay_the_difference, :selling_the_difference, :comment)
+      params.require(:construction).permit(:construction_name, :contract_price, :person, :material_cost, :subcontract_cost, :site_overhead_expenses, :total_cost, :selling, :cash_budget, :charge, :pay_the_difference, :selling_the_difference, :comment, :construction_date)
     end
 end

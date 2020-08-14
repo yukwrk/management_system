@@ -17,6 +17,8 @@
         <%= form.text_field :construction_name, class:"form-control", style:"width:300px" %>
         <%= form.label :'担当者' %>
         <%= form.text_field :person, class:"form-control", style:"width:300px" %>
+        <%= form.label :'日付' %>
+        <%= form.date_select :construction_date, discard_day:true ,use_month_numbers:true, class:"form-control", style:"width:100px" %> 
       </div>
     </div>
 
@@ -37,11 +39,11 @@
     <div class="form-group">
      <div class="form-inline">
       <%= form.label :'材料費   ' %>
-      <%= form.text_field :material_cost, class:"form-control plus-target", id:"material_cost", style:"width:300px" %>
+      <%= form.text_field :material_cost, class:"form-control plus-target", id:"material_cost", style:"width:300px"%>
       <%= form.label :'外注費   ' %>
       <%= form.text_field :subcontract_cost, class:"form-control plus-target", id:"subcontract_cost", style:"width:300px" %>
       <%= form.label :'現場経費   ' %>
-      <%= form.text_field :site_overhead_expenses, class:"form-control plus-target", id:"site_overhead_expenses", style:"width:300px" %>
+      <%= form.text_field :site_overhead_expenses, class:"form-control plus-target num_data", id:"site_overhead_expenses", style:"width:300px" %>
      </div>
     </div>
 

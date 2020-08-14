@@ -10,25 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_162957) do
+ActiveRecord::Schema.define(version: 2020_08_14_122550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "constructions", force: :cascade do |t|
     t.string "construction_name"
-    t.bigint "contract_price"
     t.string "person"
+    t.bigint "total_cost"
+    t.bigint "charge"
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "partner_name"
+    t.bigint "monthly_total_cost"
+  end
+
+  create_table "details", force: :cascade do |t|
+    t.integer "construction_id"
+    t.string "detail_name"
+    t.integer "tax_rate"
+    t.integer "tax_class"
     t.bigint "material_cost"
+    t.bigint "labor_cost"
     t.bigint "subcontract_cost"
     t.bigint "site_overhead_expenses"
-    t.bigint "total_cost"
-    t.bigint "selling"
-    t.bigint "cash_budget"
-    t.bigint "charge"
-    t.bigint "pay_the_difference"
-    t.bigint "selling_the_difference"
-    t.string "comment"
+    t.string "corresponding_account"
+    t.string "account_name"
+    t.date "construction_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

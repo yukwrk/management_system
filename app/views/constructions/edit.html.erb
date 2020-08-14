@@ -1,6 +1,42 @@
-<h1>Editing Construction</h1>
 
-<%= render 'form', construction: @construction %>
+<div class="container" style="margin-top : 60px">
+ <h3>編集画面</h3>
+  <div class="panel panel-default">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+    <%= render 'form', construction: @construction %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Show', @construction %> |
-<%= link_to 'Back', constructions_path %>
+<script type="text/javascript">
+
+// 原価計の計算
+    $('.add_button').click(function() {
+
+        var a = $("#material_cost").val();
+        var b = $("#subcontract_cost").val();
+        var c = $("#site_overhead_expenses").val();
+        var ai = parseInt(a) || 0;
+        var bi = parseInt(b) || 0;
+        var ci = parseInt(c) || 0;
+
+        var result = ai + bi + ci
+        $('#total_cost').val(result)
+    });
+
+// 差額の計算
+    $('.minus_button').click(function() {
+
+        var d = $("#charge").val();
+        var e = $("#total_cost").val();
+        var di = parseInt(d) || 0;
+        var ei = parseInt(e) || 0;
+
+        var payTheDifference = di - ei
+        $('#pay_the_difference').val(payTheDifference)
+
+    });
+
+</script>
+

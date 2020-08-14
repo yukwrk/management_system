@@ -1,24 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>工事管理</h1>
 
 <table class = "table table-striped table-bordered">
   <thead>
     <tr>
-      <th>工事No.</th>      
-      <th>現場名</th>
-      <th>担当</th>
-      <th>請負金額①</th>
-      <th>材料費</th>
-      <th>外注費</th>
-      <th>現場経費</th>
-      <th>原価計</th>
-      <th>販管費13%③</th>
-      <th>予算収支①-②-③</th>
-      <th>請求額(税抜き)④</th>
-      <th>差額⑤</th>
-      <th>販管費⑤-③</th>
-      <th>備考</th>
+      <th class="construction-list">工事No.</th>      
+      <th class="construction-list">現場名</th>
+      <th class="construction-list">担当</th>
+      <th class="construction-list">請負金額</th>
+      <th class="construction-list">材料費</th>
+      <th class="construction-list">外注費</th>
+      <th class="construction-list">現場経費</th>
+      <th class="construction-list">原価計</th>
+      <%# <th>販管費13%③</th> %>
+      <th class="construction-list">予算収支</th>
+      <th class="construction-list">請求額(税抜き)</th>
+      <th class="construction-list">差額</th>
+      <%# <th>販管費⑤-③</th> %>
+      <th class="construction-list">備考</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,19 +25,19 @@
   <tbody>
     <% @constructions.each do |construction| %>
       <tr>
-        <td><%= construction.id %></td>
-        <td><%= construction.construction_name %></td>
-        <td><%= construction.person %></td>
-        <td><%= construction.contract_price %></td>
-        <td><%= construction.material_cost %></td>
-        <td><%= construction.subcontract_cost %></td>
-        <td><%= construction.site_overhead_expenses %></td>
-        <td><%= construction.total_cost %></td>        
-        <td><%= construction.selling %></td>
-        <td><%= construction.cash_budget %></td>
-        <td><%= construction.charge %></td>
-        <td><%= construction.pay_the_difference %></td>
-        <td><%= construction.selling_the_difference %></td>
+        <td class="list-num"><%= construction.id %></td>
+        <td class="construction-list"><%= construction.construction_name %></td>
+        <td class="construction-list"><%= construction.person %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.contract_price) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.material_cost) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.subcontract_cost) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.site_overhead_expenses) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.total_cost) %></td>        
+        <%# <td><%= converting_to_jpy(construction.selling) %>
+        <td class="list-num"><%= converting_to_jpy(construction.cash_budget) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.charge) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.pay_the_difference) %></td>
+        <%# <td><%= converting_to_jpy(construction.selling_the_difference) %>
         <td><%= construction.comment %></td>
 
         <td><%= link_to '編集', edit_construction_path(construction) %></td>
@@ -50,4 +49,3 @@
 
 <br>
 
-<%= link_to '現場登録', new_construction_path %>
