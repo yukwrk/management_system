@@ -1,45 +1,32 @@
 class ConstructionsController < ApplicationController
   before_action :set_construction, only: [:show, :edit, :update, :destroy]
 
-  # GET /constructions
-  # GET /constructions.json
   def index
     @constructions = Construction.all
   end
 
-  # GET /constructions/1
-  # GET /constructions/1.json
   def show
   end
 
-  # GET /constructions/new
   def new
     @construction = Construction.new
+    @detail = @construction.details.build
   end
 
-  # GET /constructions/1/edit
   def edit
   end
 
-  # POST /constructions
-  # POST /constructions.json
   def create
     @construction = Construction.new(construction_params)
 
-    # respond_to do |format|
+
       if @construction.save
-        # format.html { redirect_to @construction, notice: 'Construction was successfully created.' }
-        # format.json { render :show, status: :created, location: @construction }
         redirect_to constructions_path
       else
-        # format.html { render :new }
-        # format.json { render json: @construction.errors, status: :unprocessable_entity }
         render new
       end
   end
 
-  # PATCH/PUT /constructions/1
-  # PATCH/PUT /constructions/1.json
   def update
     respond_to do |format|
       if @construction.update(construction_params)
@@ -52,8 +39,6 @@ class ConstructionsController < ApplicationController
     end
   end
 
-  # DELETE /constructions/1
-  # DELETE /constructions/1.json
   def destroy
     @construction.destroy
     respond_to do |format|
@@ -63,13 +48,12 @@ class ConstructionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_construction
       @construction = Construction.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def construction_params
-      params.require(:construction).permit(:construction_name, :contract_price, :person, :material_cost, :subcontract_cost, :site_overhead_expenses, :total_cost, :selling, :cash_budget, :charge, :pay_the_difference, :selling_the_difference, :comment, :construction_date)
+      params.require(:construction).permit(:construction_name, :person, :tolal_cost, :charge, :comment, :partner_name, :monthly_total_cost, details_attributes: [:id, :detail_name, :tax_rate, :tax_class, :material_cost, :labor_cost, :subcontract_cost, :site_overhead_expenses, :corresponding_account, :account_name, :construction_date])
     end
 end
