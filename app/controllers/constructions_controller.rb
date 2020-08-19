@@ -2,10 +2,13 @@ class ConstructionsController < ApplicationController
   before_action :set_construction, only: [:show, :edit, :update, :destroy]
 
   def index
-    @constructions = Construction.all
+    @constructions = Construction.all.includes(:details)
   end
 
   def show
+    @construction = Construction.find(params[:id])
+    @details = Detail.where(construction_id: @construction).group_by(&:construction_date)
+    @total_costs = Detail.where(construction_id: @construction)
   end
 
   def new
@@ -14,12 +17,11 @@ class ConstructionsController < ApplicationController
   end
 
   def edit
+
   end
 
   def create
     @construction = Construction.new(construction_params)
-
-
       if @construction.save
         redirect_to constructions_path
       else
@@ -42,7 +44,7 @@ class ConstructionsController < ApplicationController
   def destroy
     @construction.destroy
     respond_to do |format|
-      format.html { redirect_to constructions_url, notice: 'Construction was successfully destroyed.' }
+      format.html { redirect_to constructions_url, notice: '削除完了' }
       format.json { head :no_content }
     end
   end
@@ -54,6 +56,16 @@ class ConstructionsController < ApplicationController
     end
 
     def construction_params
-      params.require(:construction).permit(:construction_name, :person, :tolal_cost, :charge, :comment, :partner_name, :monthly_total_cost, details_attributes: [:id, :detail_name, :tax_rate, :tax_class, :material_cost, :labor_cost, :subcontract_cost, :site_overhead_expenses, :corresponding_account, :account_name, :construction_date])
+      # prms = 
+      params.require(:construction).permit(
+        :construction_name, :person, :total_cost, :charge, :comment, 
+        :partner_name, :monthly_total_cost, 
+          details_attributes: [
+            :id, :detail_name, :tax_rate, :tax_class, :material_cost, 
+            :labor_cost, :subcontract_cost, :site_overhead_expenses, 
+            :corresponding_account, :account_name, :construction_date,
+            :_destroy
+            ]
+        )
     end
 end

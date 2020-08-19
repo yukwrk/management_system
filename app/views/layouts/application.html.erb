@@ -23,6 +23,11 @@
           <ul class="nav navbar-nav">
             <li><%= link_to '現場登録', new_construction_path %></li>
             <li><%= link_to '現場一覧', constructions_path %></li>
+            <%if user_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to 'ログイン', new_user_session_path %></li>
+            <%end%>
           </ul>
         </div>
       </div>

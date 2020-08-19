@@ -1,0 +1,13 @@
+<tr class="nested-fields">
+    <td><%= f.date_select :construction_date, use_month_numbers:true, discard_day:true, class:"form-control", style:"width:125px" %></td>
+    <td><%= f.text_field :detail_name, class:"form-control", style:"width:250px" %></td>
+    <td><%= f.text_field :tax_class, class:"form-control", style:"width:43px" %></td>
+    <td><%= f.text_field :tax_rate, class:"form-control", style:"width:43px" %></td>
+    <td><%= f.text_field :corresponding_account, class:"form-control", style:"width:90px" %></td>
+    <td><%= f.text_field :material_cost, class:"form-control", style:"width:115px" %></td>
+    <td><%= f.text_field :labor_cost, class:"form-control", style:"width:115px" %></td>
+    <td><%= f.text_field :subcontract_cost, class:"form-control", style:"width:115px" %></td>
+    <td><%= f.text_field :site_overhead_expenses, class:"form-control", style:"width:115px" %></td>
+    <td><%= f.text_field :account_name, class:"form-control", style:"width:115px" %></td>
+    <td><%= link_to_remove_association "削除", f %></td>
+</tr>

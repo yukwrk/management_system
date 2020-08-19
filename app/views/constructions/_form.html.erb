@@ -1,4 +1,4 @@
-<%= form_with(model: construction, local: true) do |form| %>
+<%= form_with(model: @construction, local: true) do |form| %>
   <% if construction.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(construction.errors.count, "error") %> prohibited this construction from being saved:</h2>
@@ -14,103 +14,40 @@
     <div class="form-group">
      <div class="form-inline">
         <%= form.label :'現場名' %>
-        <%= form.text_field :construction_name, class:"form-control", style:"width:300px" %>
+        <%= form.text_field :construction_name, class:"form-control", style:"width:250px" %>
         <%= form.label :'担当者' %>
-        <%= form.text_field :person, class:"form-control", style:"width:300px" %>
-        <%= form.label :'日付' %>
-        <%= form.date_select :construction_date, discard_day:true ,use_month_numbers:true, class:"form-control", style:"width:100px" %> 
-      </div>
-    </div>
-
-
-
-<% 
-=begin
-%>
-    <div class="form-group">
-      <%= form.label :'請負金額①' %>
-      <%= form.number_field :contract_price, class:"form-control", style:"width:300px" %>
-    </div>
-<% 
-=end
-%>
-
-
-    <div class="form-group">
-     <div class="form-inline">
-      <%= form.label :'材料費   ' %>
-      <%= form.text_field :material_cost, class:"form-control plus-target", id:"material_cost", style:"width:300px"%>
-      <%= form.label :'外注費   ' %>
-      <%= form.text_field :subcontract_cost, class:"form-control plus-target", id:"subcontract_cost", style:"width:300px" %>
-      <%= form.label :'現場経費   ' %>
-      <%= form.text_field :site_overhead_expenses, class:"form-control plus-target num_data", id:"site_overhead_expenses", style:"width:300px" %>
+        <%= form.text_field :person, class:"form-control", style:"width:200px" %>
+        <%= form.label :'請求額' %>
+        <%= form.text_field :charge, class:"form-control", style:"width:250px", id:"charge"%><span style="margin-left:5px">(税抜き)</span>
      </div>
     </div>
-
-    <div class="form-group">
-     <div class="form-inline">
-      <%= form.label :'原価計' %>
-      <%= form.text_field :total_cost, class:"form-control", style:"width:300px", id:"total_cost"%>
-      <button type="button" class="btn btn-primary add_button">計算</button>
-     </div>
-    </div>
-
-<% 
-=begin
-%>
-    <div class="form-group">
-      <%= form.label :'販管費13% ③' %>
-      <%= form.number_field :selling, class:"form-control", style:"width:300px" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :'予算収支' %>
-      <%= form.number_field :cash_budget, class:"form-control", style:"width:300px" %>
-    </div>
-<% 
-=end
-%>
-
-
-    <div class="form-group">
-     <div class="form-inline">
-      <%= form.label :'請求額' %>
-      <%= form.number_field :charge, class:"form-control", style:"width:300px", id:"charge" %><span style="margin-left:5px">(税抜き)</span>
-     </div>
-    </div>
-
-    <div class="form-group">
-     <div class="form-inline">
-      <%= form.label :'差額' %>
-      <%= form.number_field :pay_the_difference, class:"form-control", style:"width:300px", id:"pay_the_difference" %>
-      <button type="button" class="btn btn-primary minus_button">計算</button>
-
-     </div>
-    </div>
-
-<%
-=begin
-%>
-    <div class="form-group">
-      <%= form.label :'差額 ⑤' %>
-      <%= form.number_field :pay_the_difference, class:"form-control", style:"width:300px" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.label :'販管費 ⑤-③' %>
-      <%= form.number_field :selling_the_difference, class:"form-control", style:"width:300px" %>
-    </div>
-
-<%
-=end
-%>
-
-    <div class="form-inline">
-      <%= form.label :'備考' %>
-      <%= form.text_area :comment, class:"form-control", style:"width:300px" %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit '登録' %>
-    </div>
+    <table class="table table-striped table-bordered nested-fields">
+      <thead>
+          <tr>
+            <th>年月日</th>
+            <th>摘要</th>
+            <th>課区</th>
+            <th>税区</th>
+            <th>相手科目</th>
+            <th>材料費</th>
+            <th>労務費</th>
+            <th>外注費</th>
+            <th>現場経費</th>
+            <th>科目名</th>
+          </tr>
+      </thead>
+      <tbody id="monthly_details">
+        <div class = "form-group">
+          <%= form.fields_for :details do |detail| %>
+          <%= render 'detail_fields', f: detail %>
+          <%end%>
+        </div>
+      </tbody>
+    </table>
+      <%= form.submit '登録', class: 'btn btn-primary' %>
+      <%= link_to_add_association "行を追加", form, :details , class: 'btn btn-primary line_add',
+        data: {
+          association_insertion_node: '#monthly_details',
+          association_insertion_method: 'append'
+        }%>
 <% end %>

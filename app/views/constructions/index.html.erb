@@ -7,17 +7,13 @@
       <th class="construction-list">工事No.</th>      
       <th class="construction-list">現場名</th>
       <th class="construction-list">担当</th>
-      <th class="construction-list">請負金額</th>
       <th class="construction-list">材料費</th>
+      <th class="construction-list">労務費</th>
       <th class="construction-list">外注費</th>
       <th class="construction-list">現場経費</th>
       <th class="construction-list">原価計</th>
-      <%# <th>販管費13%③</th> %>
-      <th class="construction-list">予算収支</th>
       <th class="construction-list">請求額(税抜き)</th>
       <th class="construction-list">差額</th>
-      <%# <th>販管費⑤-③</th> %>
-      <th class="construction-list">備考</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -28,18 +24,14 @@
         <td class="list-num"><%= construction.id %></td>
         <td class="construction-list"><%= construction.construction_name %></td>
         <td class="construction-list"><%= construction.person %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.contract_price) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.material_cost) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.subcontract_cost) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.site_overhead_expenses) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.total_cost) %></td>        
-        <%# <td><%= converting_to_jpy(construction.selling) %>
-        <td class="list-num"><%= converting_to_jpy(construction.cash_budget) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.charge) %></td>
-        <td class="list-num"><%= converting_to_jpy(construction.pay_the_difference) %></td>
-        <%# <td><%= converting_to_jpy(construction.selling_the_difference) %>
-        <td><%= construction.comment %></td>
-
+        <td class="list-num"><%= converting_to_jpy(construction.details.sum(:material_cost).floor) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.details.sum(:labor_cost).floor) %></td> 
+        <td class="list-num"><%= converting_to_jpy(construction.details.sum(:subcontract_cost).floor) %></td> 
+        <td class="list-num"><%= converting_to_jpy(construction.details.sum(:site_overhead_expenses).floor) %></td>
+        <td class="list-num"><%= converting_to_jpy((construction.details.sum(:material_cost)+construction.details.sum(:labor_cost)+construction.details.sum(:subcontract_cost)+construction.details.sum(:site_overhead_expenses)).floor) %></td>       
+        <td class="list-num"><%= converting_to_jpy(construction.charge.floor) %></td>
+        <td class="list-num"><%= converting_to_jpy((construction.charge - (construction.details.sum(:material_cost)+construction.details.sum(:labor_cost)+construction.details.sum(:subcontract_cost)+construction.details.sum(:site_overhead_expenses))).floor) %></td>
+        <td><%= link_to '詳細', construction_path(construction.id) %></td>
         <td><%= link_to '編集', edit_construction_path(construction) %></td>
         <td><%= link_to '削除', construction, method: :delete, data: { confirm: '削除しますか？' } %></td>
       </tr>
