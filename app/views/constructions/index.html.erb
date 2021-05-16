@@ -29,7 +29,7 @@
         <td class="list-num"><%= converting_to_jpy(construction.details.sum(:subcontract_cost).floor) %></td> 
         <td class="list-num"><%= converting_to_jpy(construction.details.sum(:site_overhead_expenses).floor) %></td>
         <td class="list-num"><%= converting_to_jpy((construction.details.sum(:material_cost)+construction.details.sum(:labor_cost)+construction.details.sum(:subcontract_cost)+construction.details.sum(:site_overhead_expenses)).floor) %></td>       
-        <td class="list-num"><%= converting_to_jpy(construction.charge.floor) %></td>
+        <td class="list-num"><%= converting_to_jpy(construction.charge) %></td>
         <td class="list-num"><%= converting_to_jpy((construction.charge - (construction.details.sum(:material_cost)+construction.details.sum(:labor_cost)+construction.details.sum(:subcontract_cost)+construction.details.sum(:site_overhead_expenses))).floor) %></td>
         <td><%= link_to '詳細', construction_path(construction.id) %></td>
         <td><%= link_to '編集', edit_construction_path(construction) %></td>
